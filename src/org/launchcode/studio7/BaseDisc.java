@@ -20,5 +20,24 @@ public abstract class BaseDisc {
         return usedData;
     }
 
+    private int storageLeft() {
+        return storageCapacity - capacityUsed;
+    }
+
+    public String discStats() {
+        String result = "Disc Name: " + this.name + "\nMax Capacity: " + this.storageCapacity + "\nStorage Used: " + capacityUsed + "\nAvailable Storage: " + remainingCapacity;
+        return result;
+    }
+
+    public String writeData(int dataSize) {
+        if (dataSize > remainingCapacity) {
+            return "I'm sorry, there is no space available Dave. -Hal 9000";
+        }
+        capacityUsed += dataSize;
+        remainingCapacity -= dataSize;
+
+        return "Successfully wrote data to disc your remaining space is " + remainingCapacity;
+    }
+
 
 }
